@@ -3,7 +3,7 @@
 namespace Main.Domain.HouseholdItems.Commands
 {
     /// <summary>
-    /// Command to add an client's household item
+    /// Command to add a client's household item
     /// </summary>
     public class AddHouseholdItemForClientCommand : ICommand
     {
@@ -14,9 +14,22 @@ namespace Main.Domain.HouseholdItems.Commands
             Category = category;
         }
 
-        // TODO - Document properties
+        /// <summary>
+        /// The household item name
+        /// </summary>
         public string Name { get; }
+        
+        /// <summary>
+        /// The household item value
+        /// </summary>
+        /// <remarks>
+        /// Value must be a positive value.
+        /// </remarks>
         public uint Value { get; }
+        
+        /// <summary>
+        /// The household item category
+        /// </summary>
         public string Category { get; }
     }
 }

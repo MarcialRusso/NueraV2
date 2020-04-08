@@ -5,9 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\HouseholdItems\Models" />
-    <Folder Include="Domain\HouseholdItems\Queries" />
-    <Folder Include="Domain\HouseholdItems\Services" />
+    <Compile Remove="Domain\HouseholdItems\Services\**" />
+    <Content Remove="Domain\HouseholdItems\Services\**" />
+    <EmbeddedResource Remove="Domain\HouseholdItems\Services\**" />
+    <None Remove="Domain\HouseholdItems\Services\**" />
   </ItemGroup>
 
   <ItemGroup>

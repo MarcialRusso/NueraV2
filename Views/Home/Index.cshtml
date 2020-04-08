@@ -3,28 +3,25 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    
-    <h3><b>Add list of items here with sum</b></h3>
-    @using (Html.BeginForm("AddHouseholdItem", "Home", FormMethod.Post))
-    {
-        <table>
-            <tr>
-                <td>Enter Name: </td>
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+        <h3><b>Add list of items here with sum</b></h3>
+        @using (Html.BeginForm("AddHouseholdItem", "Home", FormMethod.Post))
+        {
+            <table>
+            </table>
+
+            <div>
                 <td>@Html.TextBox("Item Name")</td>
-                <td>Enter Value: </td>
                 <td>@Html.TextBox("Value")</td>
-                <td>Enter Category: </td>
-                <td>@Html.DropDownList("Category",
-                        new SelectList(Enum.GetValues(typeof(CategoryType))),
-                        "Select Category",
-                        new { @class = "form-control" })</td>
-            </tr>
-            <tr>
+                <td>
+                    @Html.DropDownList("Category",
+                    new SelectList(Enum.GetValues(typeof(CategoryType))),
+                    new { @class = "form-control" })
+                </td>
                 <td colspan="2"><input type="submit" value="Add"></td>
-            </tr>
-        </table>
-    }
-</div>
+            </div>
+                }
+        </div>

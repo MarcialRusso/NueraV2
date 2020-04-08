@@ -4,3 +4,5 @@
   Could also leave as is and with the removal of domain infer Main to be our presentation layer.
 - The application layer is missing since it's currently not needed 
 - Move the domain folder to its own project
+- Implement behavioral test with specflow or xbehave for end-to-end testing
+- Implement unit test

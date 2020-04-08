@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Main.Domain.HouseholdItems.Commands;
+using Main.Domain.HouseholdItems.Queries;
 using Main.Models;
 using Main.Models.HouseholdItems;
 using MediatR;
@@ -25,7 +26,7 @@ namespace Main.Controllers
         {
             return View();
         }
-        
+
         // TODO - Move to it's own controller
         [HttpPost]
         public async Task<ActionResult> AddHouseholdItem(HouseholdItem item)  
@@ -34,14 +35,17 @@ namespace Main.Controllers
             {
                 var command = new AddHouseholdItemForClientCommand(item.Name, item.Value, item.Category);
                 await _mediator.Send(command);
+
+                // on an API this would be on its own endpoint, for now just ensure query gets called
+                var model = await _mediator.Send(new HouseholdItemQuery { HouseholdItemId = Guid.NewGuid() });
+
+                return View();
             }
             catch (Exception e)
             {
                 _logger.Log(LogLevel.Error, e, "Unable to modify client items");
                 return RedirectToAction("Index");
-            }
-            
-            return View();  
+            }  
         }  
 
         public IActionResult Privacy()
