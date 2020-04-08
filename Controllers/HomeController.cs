@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Main.Domain.ClientCatalog.Queries;
 using Main.Domain.HouseholdItems.Commands;
 using Main.Domain.HouseholdItems.Queries;
 using Main.Models;
@@ -38,6 +39,9 @@ namespace Main.Controllers
 
                 // on an API this would be on its own endpoint, for now just ensure query gets called
                 var model = await _mediator.Send(new HouseholdItemQuery { HouseholdItemId = Guid.NewGuid() });
+
+                // on an API this would be on its own endpoint, for now just ensure query gets called
+                var clientCatalog = await _mediator.Send(new ClientCatalogQuery());
 
                 return View();
             }

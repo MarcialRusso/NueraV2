@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using Main.Domain.HouseholdItems.Models;
+﻿using Main.Domain.ClientCatalog.Models;
 using MediatR;
 
-namespace Main.Domain.HouseholdItems.Queries
+namespace Main.Domain.ClientCatalog.Queries
 {
     /// <summary>
     /// Retrieves a client insurable household items catalog.
