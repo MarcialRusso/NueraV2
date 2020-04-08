@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿﻿using Microsoft.EntityFrameworkCore;
 using NueraVersion2.Infrastructure.Entities;
 using NueraVersion2.Infrastructure.Interfaces;
 

@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 
 namespace NueraVersion2.Infrastructure.Entities
 {

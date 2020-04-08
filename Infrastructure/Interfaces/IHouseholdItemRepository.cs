@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿﻿using System.Collections.Generic;
 using NueraVersion2.Infrastructure.Entities;
 
 namespace NueraVersion2.Infrastructure.Interfaces

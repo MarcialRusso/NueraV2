@@ -1,4 +1,4 @@
-﻿namespace NueraVersion2.Infrastructure.Entities
+﻿﻿namespace NueraVersion2.Infrastructure.Entities
 {
     /// <summary>
     /// Describes the possible category types for which a customer may
