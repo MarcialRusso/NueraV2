@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Models" />
-    <Folder Include="Domain\Queries" />
-    <Folder Include="Domain\Services" />
+    <Folder Include="Domain\HouseholdItems\Models" />
+    <Folder Include="Domain\HouseholdItems\Queries" />
+    <Folder Include="Domain\HouseholdItems\Services" />
   </ItemGroup>
 
   <ItemGroup>

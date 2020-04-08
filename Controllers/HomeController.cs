@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Main.Domain.Commands;
+using Main.Domain.HouseholdItems.Commands;
 using Main.Models;
 using Main.Models.HouseholdItems;
 using MediatR;
