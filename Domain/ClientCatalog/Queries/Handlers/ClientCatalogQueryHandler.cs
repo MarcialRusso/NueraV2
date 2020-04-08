@@ -5,7 +5,6 @@ using Infrastructure.Context;
 using Main.Domain.ClientCatalog.Models;
 using Main.Domain.HouseholdItems.Models;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Main.Domain.ClientCatalog.Queries.Handlers
 {
@@ -19,37 +18,44 @@ namespace Main.Domain.ClientCatalog.Queries.Handlers
             _context = context;
         }
 
-        async Task<ClientCatalogModel> IRequestHandler<ClientCatalogQuery, ClientCatalogModel>.Handle(ClientCatalogQuery request, CancellationToken cancellationToken)
-        {
-            // Check performance since we are pulling all objects at once
-            // If performance is bad then improve by:
-            // 1. Using pagination
-            // 2. Improve query performance by implementing a more complex LINQ query(ie. let x ... ) 
-            // 3. Instead of the model calculating the total value, provide it from the query
-            var groupedHouseholdItems = await _context.HouseholdItems
+        /// <summary>
+        /// Retrieves a client's catalog
+        /// </summary>
+        /// <remarks>
+        /// Check performance since we are pulling all objects at once
+        /// If performance is bad then improve by:
+        /// 1. Using pagination
+        /// 2. Improve query performance by implementing a more complex LINQ query(ie. let x ... ) 
+        /// 3. Instead of the model calculating the total value, provide it from the query
+        ///
+        /// Due to issues with EF core Group By query needs .AsEnumerable() and also it may not be async
+        /// for more info see: https://github.com/dotnet/efcore/issues/17068
+        /// and https://stackoverflow.com/questions/58916542/converting-ef-core-queries-from-2-2-to-3-0-async-await/58920736#58920736
+        /// </remarks>
+        Task<ClientCatalogModel> IRequestHandler<ClientCatalogQuery, ClientCatalogModel>.Handle(ClientCatalogQuery request, CancellationToken cancellationToken)
+        {            
+            var householdItems = _context.HouseholdItems
                 .Select(h => new HouseholdItemModel
                 { 
                     Category = h.Category,
                     Name = h.Name,
                     Value = h.Value
                 })
-                .OrderBy(h => h.Category)
+                .AsEnumerable()
                 .GroupBy(h => h.Category)
-                .ToListAsync(cancellationToken);
-
-            var householdItemsModel = groupedHouseholdItems.Select(i => 
-                    new HouseholdItemsModel
-                    {
-                        Category = i.First().Category,
-                        Items = i.Select(s => s).ToList()
-                    }).ToList();
+                .Select(i => new HouseholdItemsModel
+                {
+                    Category = i.First().Category,
+                    Items = i.Select(s => s).ToList()
+                }).OrderBy(h => h.Category)
+                .ToList();
             
             var catalog = new ClientCatalogModel
             {
-                HouseholdItems = householdItemsModel
+                HouseholdItems = householdItems
             };
 
-            return catalog;
+            return Task.FromResult(catalog);
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Main.Domain.ClientCatalog.Queries;
 using Main.Domain.HouseholdItems.Commands;
-using Main.Domain.HouseholdItems.Queries;
 using Main.Models;
 using Main.Models.HouseholdItems;
 using MediatR;
@@ -37,10 +36,7 @@ namespace Main.Controllers
                 var command = new AddHouseholdItemForClientCommand(item.Name, item.Value, item.Category);
                 await _mediator.Send(command);
 
-                // on an API this would be on its own endpoint, for now just ensure query gets called
-                var model = await _mediator.Send(new HouseholdItemQuery { HouseholdItemId = Guid.NewGuid() });
-
-                // on an API this would be on its own endpoint, for now just ensure query gets called
+                // here for now just to ensure query gets called
                 var clientCatalog = await _mediator.Send(new ClientCatalogQuery());
 
                 return View();

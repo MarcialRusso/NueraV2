@@ -10,18 +10,14 @@
         <h3><b>Add list of items here with sum</b></h3>
         @using (Html.BeginForm("AddHouseholdItem", "Home", FormMethod.Post))
         {
-            <table>
-            </table>
-
             <div>
-                <td>@Html.TextBox("Item Name")</td>
-                <td>@Html.TextBox("Value")</td>
-                <td>
-                    @Html.DropDownList("Category",
-                    new SelectList(Enum.GetValues(typeof(CategoryType))),
-                    new { @class = "form-control" })
-                </td>
-                <td colspan="2"><input type="submit" value="Add"></td>
+                @Html.TextBox("Item Name")
+                @Html.TextBox("Value")
+                @Html.DropDownList("Category",
+                 new SelectList(Enum.GetValues(typeof(CategoryType))),
+                     new { @class = "form-control" })
+                
+                <div colspan="2"><input type="submit" value="Add"></div>
             </div>
-                }
-        </div>
+        }
+     </div>

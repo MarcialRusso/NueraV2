@@ -28,10 +28,11 @@ namespace Main.Domain.HouseholdItems.Commands.Handlers
                 Id = Guid.NewGuid(),
                 Name = request.Name,
                 Value = (int)request.Value,
-                Category =  request.Category
+                Category =  request.Category,
+                DateAdded = DateTime.UtcNow
             });
-            
-            return Task.CompletedTask;
+
+            return _householdItemRepository.SaveAsync();
         }
     }
 }
