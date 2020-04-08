@@ -23,7 +23,7 @@ namespace Main.Domain.HouseholdItems.Queries.Handlers
         async Task<ClientCatalogModel> IRequestHandler<ClientCatalogQuery, ClientCatalogModel>.Handle(ClientCatalogQuery request, CancellationToken cancellationToken)
         {
             // Check performance since we are pulling all objects at once
-            // If bad may want to use pagination            
+            // If bad may want to use pagination         
             var householdItems = await _context.HouseholdItems
                 .Select(h => new HouseholdItemModel
                 { 
