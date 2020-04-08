@@ -1,6 +1,6 @@
-﻿using NueraVersion2.Domain.Interfaces;
+﻿using Main.Domain.Interfaces;
 
-namespace NueraVersion2.Domain.Commands
+namespace Main.Domain.Commands
 {
     /// <summary>
     /// Command to add an client's household item

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Main.Domain.Commands;
+using Main.Models;
+using Main.Models.HouseholdItems;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using NueraVersion2.Domain.Commands;
-using NueraVersion2.Models;
-using NueraVersion2.Models.HouseholdItems;
 
-namespace NueraVersion2.Controllers
+namespace Main.Controllers
 {
     public class HomeController : Controller
     {

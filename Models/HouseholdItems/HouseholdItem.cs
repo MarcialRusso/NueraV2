@@ -1,4 +1,4 @@
-﻿namespace NueraVersion2.Models.HouseholdItems
+﻿namespace Main.Models.HouseholdItems
 {
     /// <summary>
     /// Represents and household item added by the client 

@@ -1,10 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using NueraVersion2.Infrastructure.Context;
-using NueraVersion2.Infrastructure.Interfaces;
 
-namespace NueraVersion2.Domain.Commands.Handlers
+namespace Main.Domain.Commands.Handlers
 {
     public class AddHouseholdItemForClientCommandHandler : AsyncRequestHandler<AddHouseholdItemForClientCommand>
     {

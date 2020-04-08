@@ -1,4 +1,4 @@
-﻿namespace NueraVersion2.Models.HouseholdItems
+﻿namespace Main.Models.HouseholdItems
 {
     /// <summary>
     /// Describes the possible category types for which a customer may

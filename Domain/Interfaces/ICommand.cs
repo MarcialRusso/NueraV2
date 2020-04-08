@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace NueraVersion2.Domain.Interfaces
+namespace Main.Domain.Interfaces
 {
     /// <summary>
     /// Represents a system command/action 

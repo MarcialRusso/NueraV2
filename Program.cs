@@ -1,11 +1,11 @@
 using System;
+using Infrastructure.Context;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using NueraVersion2.Infrastructure.Context;
 
-namespace NueraVersion2
+namespace Main
 {
     public class Program
     {
@@ -19,7 +19,7 @@ namespace NueraVersion2
 
                 try
                 {
-                    var context = services.GetRequiredService<NueraDbContext>();
+                    var context = services.GetRequiredService<NueraContext>();
                     context.Database.EnsureCreated();
                     host.Run();
                 }

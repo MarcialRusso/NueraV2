@@ -1,19 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
+using Infrastructure.Context;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NueraVersion2.Infrastructure.Context;
 
-namespace NueraVersion2
+namespace Main
 {
     public class Startup
     {
@@ -30,8 +25,8 @@ namespace NueraVersion2
             services.AddMediatR(Assembly.GetExecutingAssembly());
             
             services.AddControllersWithViews();
-            
-            services.AddDbContext<NueraDbContext>(options =>
+
+            services.AddDbContext<NueraContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("NueraDbContext")));
         }
 

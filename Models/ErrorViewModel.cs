@@ -1,4 +1,4 @@
-namespace NueraVersion2.Models
+namespace Main.Models
 {
     public class ErrorViewModel
     {
