@@ -2,13 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <StartupObject>Main.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Domain\HouseholdItems\Services\**" />
+    <Compile Remove="Main.Unit.Test\**" />
     <Content Remove="Domain\HouseholdItems\Services\**" />
+    <Content Remove="Main.Unit.Test\**" />
     <EmbeddedResource Remove="Domain\HouseholdItems\Services\**" />
+    <EmbeddedResource Remove="Main.Unit.Test\**" />
     <None Remove="Domain\HouseholdItems\Services\**" />
+    <None Remove="Main.Unit.Test\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -64,6 +69,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="xunit" Version="2.4.1" />
   </ItemGroup>
 
   <ItemGroup>

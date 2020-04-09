@@ -29,6 +29,8 @@ namespace Main
 
             services.AddScoped<IHouseholdItemRepository, HouseholdItemRepository>();
 
+            services.AddScoped<INueraContext, NueraContext>();
+
             services.AddMediatR(Assembly.GetExecutingAssembly());
             
             services.AddControllersWithViews();            

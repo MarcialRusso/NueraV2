@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Infrastructure.Context;
+using Infrastructure.Interfaces;
 using Main.Domain.ClientCatalog.Models;
 using Main.Domain.HouseholdItems.Models;
 using MediatR;
@@ -11,9 +11,9 @@ namespace Main.Domain.ClientCatalog.Queries.Handlers
     // TODO - Replace IRequestHandler with an abstraction layer (eg: IQueryHandler)
     public class ClientCatalogQueryHandler : IRequestHandler<ClientCatalogQuery, ClientCatalogModel>
     {
-        private readonly NueraContext _context;
+        private readonly INueraContext _context;
 
-        public ClientCatalogQueryHandler(NueraContext context)
+        public ClientCatalogQueryHandler(INueraContext context)
         {
             _context = context;
         }
@@ -32,7 +32,7 @@ namespace Main.Domain.ClientCatalog.Queries.Handlers
         /// for more info see: https://github.com/dotnet/efcore/issues/17068
         /// and https://stackoverflow.com/questions/58916542/converting-ef-core-queries-from-2-2-to-3-0-async-await/58920736#58920736
         /// </remarks>
-        Task<ClientCatalogModel> IRequestHandler<ClientCatalogQuery, ClientCatalogModel>.Handle(ClientCatalogQuery request, CancellationToken cancellationToken)
+        public Task<ClientCatalogModel> Handle(ClientCatalogQuery request, CancellationToken cancellationToken)
         {            
             var householdItems = _context.HouseholdItems
                 .Select(h => new HouseholdItemModel
@@ -47,7 +47,8 @@ namespace Main.Domain.ClientCatalog.Queries.Handlers
                 {
                     Category = i.First().Category,
                     Items = i.Select(s => s).ToList()
-                }).OrderBy(h => h.Category)
+                })
+                .OrderBy(h => h.Category)
                 .ToList();
             
             var catalog = new ClientCatalogModel

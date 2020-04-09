@@ -1,5 +1,6 @@
 using System;
 using Infrastructure.Context;
+using Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
