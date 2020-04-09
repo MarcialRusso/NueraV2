@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Main.Main.Unit.Test.Domain.ClientCatalog.Queries.Handlers
+namespace Main.Unit.Test.Domain.ClientCatalog.Queries.Handlers
 {
     public class ClientCatalogQueryHandlerFixture
     {
